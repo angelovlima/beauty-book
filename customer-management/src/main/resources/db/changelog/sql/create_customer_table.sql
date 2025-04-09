@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS customer (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    phone_number VARCHAR(20),
+    email VARCHAR(255)
+);

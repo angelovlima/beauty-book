@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-customer-table
+      author: angelovlima
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create_customer_table.sql
+            encoding: UTF-8
+            splitStatements: true
+            endDelimiter: ";"

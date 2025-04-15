@@ -13,6 +13,45 @@ services:
     volumes:
       - customer_management_data:/var/lib/postgresql/data
 
+  # Banco de dados do establishment-management
+  establishment-management-db:
+    image: postgres:16
+    container_name: establishment-management-db
+    environment:
+      POSTGRES_DB: establishment_management_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5438:5432"
+    volumes:
+      - establishment_management_data:/var/lib/postgresql/data
+
+  # Banco de dados do professional-management
+  professional-management-db:
+    image: postgres:16
+    container_name: professional-management-db
+    environment:
+      POSTGRES_DB: professional_management_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5439:5432"
+    volumes:
+      - professional_management_data:/var/lib/postgresql/data
+
+  # Banco de dados do booking
+  booking-db:
+    image: postgres:16
+    container_name: booking-db
+    environment:
+      POSTGRES_DB: booking_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5440:5432"
+    volumes:
+      - booking_management_data:/var/lib/postgresql/data
+
   # Eureka Server
   eureka-server:
     build: ./infra/eureka-server
@@ -38,5 +77,41 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: default
 
+  # Microserviço establishment-management
+  establishment-management:
+    build: ./establishment-management
+    ports:
+      - "8082:8082"
+    depends_on:
+      - establishment-management-db
+      - eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+
+  # Microserviço professional-management
+  professional-management:
+    build: ./professional-management
+    ports:
+      - "8083:8083"
+    depends_on:
+      - professional-management-db
+      - eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+
+  # Microserviço booking
+  booking:
+    build: ./booking
+    ports:
+      - "8084:8084"
+    depends_on:
+      - booking-db
+      - eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+
 volumes:
   customer_management_data:
+  establishment_management_data:
+  professional_management_data:
+  booking_management_data:

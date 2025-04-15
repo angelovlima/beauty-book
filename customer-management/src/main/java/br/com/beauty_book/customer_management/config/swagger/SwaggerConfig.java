@@ -13,7 +13,7 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("Customer Management API")
-                        .description("Serviço responsável pelo gerenciamento de clientes do BeautyBook")
+                        .description("Service responsible for managing customers in the BeautyBook system")
                         .version("1.0.0"));
     }
 }

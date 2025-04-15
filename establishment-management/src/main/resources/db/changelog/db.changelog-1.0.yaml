@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-establishment-tables
+      author: angelovlima
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create_establishment_tables.sql
+            encoding: UTF-8
+            splitStatements: true
+            endDelimiter: ";"
+
+  - changeSet:
+      id: 2-create-review-table
+      author: angelovlima
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create_review_table.sql
+            encoding: UTF-8
+            splitStatements: true
+            endDelimiter: ";"

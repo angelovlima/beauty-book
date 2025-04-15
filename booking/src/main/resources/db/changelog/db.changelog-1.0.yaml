@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-booking-tables
+      author: angelovlima
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create_booking_tables.sql
+            encoding: UTF-8
+            splitStatements: true
+            endDelimiter: ";"

@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-establishment-tables
+      author: angelovlima
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create_professional_tables.sql
+            encoding: UTF-8
+            splitStatements: true
+            endDelimiter: ";"

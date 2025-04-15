@@ -36,11 +36,11 @@ jobs:
           chmod +x mvnw
           ./mvnw test
 
-#      - name: Rodar testes do microserviço professional-management
-#        working-directory: ./professional-management
-#        run: |
-#          chmod +x mvnw
-#          ./mvnw test
+      - name: Rodar testes do microserviço professional-management
+        working-directory: ./professional-management
+        run: |
+          chmod +x mvnw
+          ./mvnw test
 
   deploy:
     needs: test

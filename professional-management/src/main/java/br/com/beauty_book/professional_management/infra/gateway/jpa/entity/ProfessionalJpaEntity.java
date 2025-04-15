@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "professional")
 @Getter
@@ -26,4 +29,10 @@ public class ProfessionalJpaEntity {
 
     @Column(nullable = false)
     private String email;
+
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL, orphanRemoval = true)
+    private final List<AvailabilityJpaEntity> availabilities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL, orphanRemoval = true)
+    private final List<ProfessionalServiceOfferedJpaEntity> services = new ArrayList<>();
 }

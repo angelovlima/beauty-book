@@ -20,19 +20,27 @@ jobs:
 
       - name: Rodar testes do microserviço booking
         working-directory: ./booking
-        run: ./mvnw test
+        run: |
+          chmod +x mvnw
+          ./mvnw test
 
       - name: Rodar testes do microserviço customer-management
         working-directory: ./customer-management
-        run: ./mvnw test
+        run: |
+          chmod +x mvnw
+          ./mvnw test
 
       - name: Rodar testes do microserviço establishment-management
         working-directory: ./establishment-management
-        run: ./mvnw test
+        run: |
+          chmod +x mvnw
+          ./mvnw test
 
 #      - name: Rodar testes do microserviço professional-management
 #        working-directory: ./professional-management
-#        run: ./mvnw test
+#        run: |
+#          chmod +x mvnw
+#          ./mvnw test
 
   deploy:
     needs: test
